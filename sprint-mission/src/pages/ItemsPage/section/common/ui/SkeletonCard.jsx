@@ -1,4 +1,4 @@
-import defaultItem from "../../../../shared/assets/default_item.png";
+import defaultItem from "../../../../../shared/assets/default_item.png";
 
 export function SkeletonCard() {
   return (

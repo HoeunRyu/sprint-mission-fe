@@ -1,9 +1,9 @@
 import "./BestItems.css";
-import { ItemCard } from "../ui/ItemCard";
+import { ItemCard } from "../common/ui/ItemCard";
 import { ORDER_BY } from "../../../../utils/APIs/getItemsListAPI";
 import { Typo, typoStyles } from "../../../../shared/Typo/Typo";
-import { useMediaQuery } from "../../../../shared/store/useMediaQuery";
-import { useItemsFetch } from "../hooks/useItemsFetch";
+import { useMediaQuery } from "../../../../shared/hooks/useMediaQuery";
+import { useItemsFetch } from "../common/hooks/useItemsFetch";
 import { useState, useEffect } from "react";
 
 //sizeConfig
@@ -15,15 +15,15 @@ const SCREEN_SIZES_TO_PAGE_SIZE = {
 
 export function BestItems() {
   const screenSize = useMediaQuery();
-  const pageSize = SCREEN_SIZES_TO_PAGE_SIZE[screenSize];
+  const limit = SCREEN_SIZES_TO_PAGE_SIZE[screenSize];
   const [params, setParams] = useState({
-    pageSize, //현재 screenSize에 해당하는 pageSize 쿼리로 전달
-    orderBy: ORDER_BY.FAVORITE.value, //정렬 기준: 좋아요순
+    limit, //현재 screenSize에 해당하는 limit 쿼리로 전달
+    sort: ORDER_BY.FAVORITE.value, //정렬 기준: 좋아요순
   });
 
-  //screenSize가 변경될 때 쿼리의 pageSize만 업데이트
+  //screenSize가 변경될 때 쿼리의 limit만 업데이트
   useEffect(() => {
-    setParams((prev) => ({ ...prev, pageSize }));
+    setParams((prev) => ({ ...prev, limit }));
   }, [screenSize]);
 
   //api호출

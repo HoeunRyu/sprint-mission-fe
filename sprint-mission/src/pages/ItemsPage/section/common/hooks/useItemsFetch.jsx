@@ -1,15 +1,18 @@
 import { useEffect, useCallback, useState } from "react";
-import { getItemsListAPI } from "../../../../utils/APIs/getItemsListAPI";
+import { getItemsListAPI } from "../../../../../utils/APIs/getItemsListAPI";
 
 /**
  * params 변경시 getItemsDataAPI 호출
- * @param {object} params {page: int, pageSize: int, orderBy: string, keyword: string}
- * @returns {object} { productList: [], totalCount: 0, isLoading: boolean }
+ * @param {object} params {page: int, limit: int, sort: string, keyword: string}
+ * @returns {object} { productList: [], totalPages: 0, isLoading: boolean }
  * @description productList는 각 상품별 이름, 가격, 이미지 링크 등 데이터가 담긴 객체 배열
  */
 export const useItemsFetch = (params) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState({ list: [], totalCount: 0 });
+  const [data, setData] = useState({
+    ProductList: [],
+    totalPages: 1,
+  });
 
   const fetchItems = useCallback(async () => {
     try {
@@ -30,7 +33,7 @@ export const useItemsFetch = (params) => {
 
   return {
     isLoading,
-    productList: data.list,
-    totalCount: data.totalCount,
+    productList: data.ProductList,
+    totalPages: data.totalPages,
   };
 };

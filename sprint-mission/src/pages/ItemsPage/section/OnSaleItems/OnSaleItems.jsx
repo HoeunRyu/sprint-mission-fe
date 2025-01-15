@@ -2,11 +2,11 @@ import "./OnSaleItems.css";
 import { SearchItems } from "./ui/SearchItems";
 import { PostItems } from "./ui/PostItems";
 import { SortItems } from "./ui/SortItems";
-import { ItemCard } from "../ui/ItemCard";
+import { ItemCard } from "../common/ui/ItemCard";
 import { PaginationItems } from "./ui/PaginationItems";
 import { Typo, typoStyles } from "../../../../shared/Typo/Typo";
 import { useMediaQuery } from "../../../../shared/hooks/useMediaQuery";
-import { useItemsFetch } from "../hooks/useItemsFetch";
+import { useItemsFetch } from "../common/hooks/useItemsFetch";
 import { useCallback, useEffect, useState } from "react";
 
 //sizeConfig
@@ -18,14 +18,14 @@ const SCREEN_SIZES_TO_PAGE_SIZE = {
 
 export function OnSaleItems() {
   const screenSize = useMediaQuery();
-  const pageSize = SCREEN_SIZES_TO_PAGE_SIZE[screenSize];
+  const limit = SCREEN_SIZES_TO_PAGE_SIZE[screenSize];
   const [params, setParams] = useState({
-    pageSize, //현재 screenSize에 해당하는 pageSize 쿼리로 전달
+    limit, //현재 screenSize에 해당하는 limit 쿼리로 전달
   });
 
-  //screenSize가 변경될 때 쿼리의 pageSize만 업데이트
+  //screenSize가 변경될 때 쿼리의 limit 업데이트
   useEffect(() => {
-    setParams((prev) => ({ ...prev, pageSize }));
+    setParams((prev) => ({ ...prev, limit }));
   }, [screenSize]);
 
   /**
@@ -37,8 +37,8 @@ export function OnSaleItems() {
   }, []);
 
   //api 호출
-  const { productList, totalCount, isLoading } = useItemsFetch(params);
-  const totalPageCount = Math.ceil(totalCount / params.pageSize); //페이지네이션에 필요한 전체 페이지 수 계산
+  const { productList, totalPages, isLoading } = useItemsFetch(params);
+  const totalPageCount = totalPages; //백엔드에서 계산해둔 전체 페이지 수 받아오기
 
   return (
     <section id="on-sale-items">
@@ -50,7 +50,7 @@ export function OnSaleItems() {
         <div className="utility-box">
           <SearchItems onSearch={(keyword) => updateParams({ keyword })} />
           <PostItems />
-          <SortItems onSortChange={(orderBy) => updateParams({ orderBy })} />
+          <SortItems onSortChange={(sort) => updateParams({ sort })} />
         </div>
       </div>
 

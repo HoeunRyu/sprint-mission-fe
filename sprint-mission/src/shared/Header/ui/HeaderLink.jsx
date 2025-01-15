@@ -18,7 +18,7 @@ export function HeaderLink() {
 
   return (
     <div className="link-list">
-      {/* TODO: 링크 수정하기 ["/freeboard" */}
+      {/* TODO: 게시판 링크 수정하기 ["/freeboard" */}
       <Link className={`link-item ${isPathBoardClassName}`} to="/">
         <Typo className={linkTypoClassName} content="자유게시판" />
       </Link>

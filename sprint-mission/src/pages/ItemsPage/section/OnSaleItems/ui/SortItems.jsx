@@ -38,7 +38,7 @@ export function SortItems({ onSortChange }) {
             className="dropdown-option"
             onClick={() => {
               handleSelectSort(item);
-              onSortChange(item.value); //orderBy 파라미터 업데이트
+              onSortChange(item.value); //sort 파라미터 업데이트
             }}
             key={idx}
           >

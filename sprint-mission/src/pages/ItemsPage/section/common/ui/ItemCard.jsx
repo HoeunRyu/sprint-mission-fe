@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import favHeart from "../../../../shared/assets/favorite_heart.png";
-import defaultItem from "../../../../shared/assets/default_item.png";
-import { CardImg } from "../../../../shared/ui/CardImg";
-import { Typo, typoStyles } from "../../../../shared/Typo/Typo";
+import favHeart from "../../../../../shared/assets/favorite_heart.png";
+import defaultItem from "../../../../../shared/assets/default_item.png";
+import { CardImg } from "../../../../../shared/ui/CardImg";
+import { Typo, typoStyles } from "../../../../../shared/Typo/Typo";
 import { SkeletonCard } from "./SkeletonCard";
 
 export function ItemCard({ product, isLoading }) {
@@ -11,9 +11,9 @@ export function ItemCard({ product, isLoading }) {
 
   const {
     images: [productImg], //반환된 배열에서 첫번째 링크 대표 이미지로 사용
-    name: productName,
+    productName: productName,
     price: productPrice,
-    favoriteCount: productFavCount,
+    favoritesCount: productFavCount,
   } = product;
 
   const formattedPrice = `${new Intl.NumberFormat("ko-KR").format(
