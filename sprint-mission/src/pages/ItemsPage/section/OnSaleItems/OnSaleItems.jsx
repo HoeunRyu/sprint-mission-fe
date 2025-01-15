@@ -5,7 +5,7 @@ import { SortItems } from "./ui/SortItems";
 import { ItemCard } from "../ui/ItemCard";
 import { PaginationItems } from "./ui/PaginationItems";
 import { Typo, typoStyles } from "../../../../shared/Typo/Typo";
-import { useMediaQuery } from "../../../../shared/store/useScreenSizeStore";
+import { useMediaQuery } from "../../../../shared/hooks/useMediaQuery";
 import { useItemsFetch } from "../hooks/useItemsFetch";
 import { useCallback, useEffect, useState } from "react";
 

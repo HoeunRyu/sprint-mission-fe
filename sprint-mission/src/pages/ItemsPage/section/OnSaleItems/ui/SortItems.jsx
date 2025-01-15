@@ -3,7 +3,7 @@ import mobileSortIcon from "../../../../../shared/assets/mobile_sort_icon.png";
 import { useOrderBy } from "../hooks/useOrderBy";
 import { ORDER_BY } from "../../../../../utils/APIs/getItemsListAPI";
 import { typoStyles } from "../../../../../shared/Typo/Typo";
-import { useMediaQuery } from "../../../../../shared/store/useScreenSizeStore";
+import { useMediaQuery } from "../../../../../shared/hooks/useMediaQuery";
 
 //ORDER_BY의 값만 배열로 가져오기
 const ORDER_BY_VALUE_ARR = Object.values(ORDER_BY);

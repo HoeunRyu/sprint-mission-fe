@@ -2,7 +2,7 @@ import "./BestItems.css";
 import { ItemCard } from "../ui/ItemCard";
 import { ORDER_BY } from "../../../../utils/APIs/getItemsListAPI";
 import { Typo, typoStyles } from "../../../../shared/Typo/Typo";
-import { useMediaQuery } from "../../../../shared/store/useScreenSizeStore";
+import { useMediaQuery } from "../../../../shared/store/useMediaQuery";
 import { useItemsFetch } from "../hooks/useItemsFetch";
 import { useState, useEffect } from "react";
 

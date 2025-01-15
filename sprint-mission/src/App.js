@@ -1,18 +1,24 @@
 import { Routes, Route } from "react-router-dom";
-import RouteLayout from "./shared/ui/RouteLayout";
+import RootLayout from "./shared/ui/RootLayout";
 import { ItemsPage } from "./pages/ItemsPage/ItemsPage";
 
 function App() {
   return (
     <Routes>
-      {/* TODO: "/" element <LandingPage />로 수정 */}
-      {/* TODO: <ItemsPage /> path "/items"로 수정 */}
-      <Route
+      {/* <Route
         path="/"
         element={
-          <RouteLayout>
+          <RootLayout>
+            <LandingPage />
+          </RootLayout>
+        }
+      /> */}
+      <Route
+        path="/items"
+        element={
+          <RootLayout>
             <ItemsPage />
-          </RouteLayout>
+          </RootLayout>
         }
       />
     </Routes>
