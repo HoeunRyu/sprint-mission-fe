@@ -8,6 +8,7 @@ import { Typo, typoStyles } from "../../../../shared/Typo/Typo";
 import { useMediaQuery } from "../../../../shared/hooks/useMediaQuery";
 import { useItemsFetch } from "../common/hooks/useItemsFetch";
 import { useCallback, useEffect, useState } from "react";
+import { SkeletonCard } from "../common/ui/SkeletonCard";
 
 //sizeConfig
 const SCREEN_SIZES_TO_PAGE_SIZE = {
@@ -26,7 +27,7 @@ export function OnSaleItems() {
   //screenSize가 변경될 때 쿼리의 limit 업데이트
   useEffect(() => {
     setParams((prev) => ({ ...prev, limit }));
-  }, [screenSize]);
+  }, [limit]);
 
   /**
    * 파라미터 업데이트
@@ -39,6 +40,9 @@ export function OnSaleItems() {
   //api 호출
   const { productList, totalPages, isLoading } = useItemsFetch(params);
   const totalPageCount = totalPages; //백엔드에서 계산해둔 전체 페이지 수 받아오기
+
+  //FIXME: 스크린사이즈 바뀔때 기존 데이터 보여주다가 스켈레톤보여주다가 다시 새로운 데이터 불러옴. 이것도 개선할수있을지.
+  const isShowSkeleton = isLoading || !productList.length;
 
   return (
     <section id="on-sale-items">
@@ -55,9 +59,13 @@ export function OnSaleItems() {
       </div>
 
       <div className="cards-box">
-        {productList.map((product, idx) => (
-          <ItemCard product={product} key={idx} isLoading={isLoading} />
-        ))}
+        {isShowSkeleton
+          ? Array.from({ length: limit }).map((_, idx) => (
+              <SkeletonCard key={idx} />
+            ))
+          : productList.map((product, idx) => (
+              <ItemCard product={product} key={idx} />
+            ))}
       </div>
 
       <PaginationItems

@@ -17,11 +17,20 @@ export const useItemsFetch = (params) => {
   const fetchItems = useCallback(async () => {
     try {
       setIsLoading(true);
+      const startTime = Date.now();
+
       console.log("쿼리 파라미터: ", params);
       const response = await getItemsListAPI(params);
       setData(response);
+
+      // 경과시간 계산
+      const elTime = Date.now() - startTime;
+      const remainingTime = Math.max(500 - elTime, 0);
+
+      // 최소 시간 지연(스켈레톤 보여주는 로딩 최소 시간)
+      await new Promise((resolve) => setTimeout(resolve, remainingTime));
     } catch (error) {
-      console.error("상품 목록 불러오기 오류:", error);
+      console.error("상품 목록 불러오기 오류: ", error);
     } finally {
       setIsLoading(false); //API실행이 종료되면 섹션 로딩 상태 종료
     }

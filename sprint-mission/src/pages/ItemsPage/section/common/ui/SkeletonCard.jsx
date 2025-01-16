@@ -1,3 +1,4 @@
+import "./SkeletonCard.css";
 import defaultItem from "../../../../../shared/assets/default_item.png";
 
 export function SkeletonCard() {
