@@ -7,7 +7,6 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<RootLayout />}>
-        {/* 중첩된 자식 라우트 */}
         {/* <Route index element={<LandingPage />} /> */}
         <Route path="items" element={<ItemsPage />} />
         {/* <Route path="items/:id" element={<ItemDetailPage />} /> */}
