@@ -1,5 +1,9 @@
 import { create } from "zustand";
-import { BREAKPOINTS } from "../../utils/constants";
+
+const BREAKPOINTS = {
+  MOBILE: 743,
+  TABLET: 1199,
+};
 
 /**
  * 반응형 분기 시점에 대한 윈도우 사이즈를 텍스트로 반환

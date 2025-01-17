@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useMediaQuery } from "../../hooks/mediaQueryHook";
 import { Typo, typoStyles } from "../../Typo/Typo";
 import { useLocation } from "react-router-dom";
 

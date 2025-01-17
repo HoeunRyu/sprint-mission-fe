@@ -2,7 +2,7 @@ import "./RegistrationItemsPage.css";
 import { RegItemInput } from "./ui/RegItemInput";
 import { Typo, typoStyles } from "../../shared/Typo/Typo";
 import { TagWithClose } from "./ui/TagWithClose";
-import { useRegItem } from "./hooks/useRegItemHook";
+import { useRegItem } from "./hooks/regItemHook";
 
 export function RegistrationItemsPage() {
   const {

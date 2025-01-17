@@ -2,8 +2,8 @@ import "./BestItems.css";
 import { ItemCard } from "../common/ui/ItemCard";
 import { ORDER_BY } from "../../../../utils/APIs/getItemsListAPI";
 import { Typo, typoStyles } from "../../../../shared/Typo/Typo";
-import { useMediaQuery } from "../../../../shared/hooks/useMediaQuery";
-import { useItemsFetch } from "../common/hooks/useItemsFetch";
+import { useMediaQuery } from "../../../../shared/hooks/mediaQueryHook";
+import { useItemsFetch } from "../common/hooks/itemsFetchHook";
 import { useState, useEffect } from "react";
 import { SkeletonCard } from "../common/ui/SkeletonCard";
 
